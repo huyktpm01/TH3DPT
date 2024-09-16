@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "TH3DPT",
-    "slug": "TH3DPT",
+    "name": "ContactLists",
+    "slug": "ContactLists",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
