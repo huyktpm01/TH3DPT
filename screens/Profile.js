@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import fetchRandomContact from "../utils/api";
+import fetchRandomContact from "../utils/api"; // Update the import based on your API structure
 import ContactThumbnail from "../components/ContactThumbnail";
 import DetailListItem from "../components/DetailListItem";
 import colors from "../utils/colors";
+import { useRoute } from "@react-navigation/native";
 
 const Profile = () => {
   const [contact, setContact] = useState({});
+  const route = useRoute();
+  const { id } = route.params; // Get id from route params
 
   useEffect(() => {
-    fetchRandomContact().then((contact) => setContact(contact));
-  }, []);
+    fetchRandomContact(id).then((contact) => setContact(contact));
+  }, [id]);
 
   const { avatar, name, email, phone, cell } = contact;
 

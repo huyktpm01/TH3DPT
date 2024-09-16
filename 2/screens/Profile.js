@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import ContactThumbnail from "../../components/ContactThumbnail";
-import DetailListItem from "../../components/DetailListItem";
-import { fetchRandomContact } from "../../utils/api";
-import colors from "../../utils/colors";
+import fetchRandomContact from "../utils/api"; // Update the import based on your API structure
+import ContactThumbnail from "../components/ContactThumbnail";
+import DetailListItem from "../components/DetailListItem";
+import colors from "../utils/colors";
+import { useRoute } from "@react-navigation/native";
 
-const Profile = ({ route }) => {
-  const { contact } = route.params;
+const Profile = () => {
+  const [contact, setContact] = useState({});
+  const route = useRoute();
+  const { id } = route.params;
+
+  useEffect(() => {
+    fetchRandomContact(id).then((contact) => setContact(contact));
+  }, [id]);
+
   const { avatar, name, email, phone, cell } = contact;
+
   return (
     <View style={styles.container}>
       <View style={styles.avatarSection}>
@@ -21,6 +30,9 @@ const Profile = ({ route }) => {
     </View>
   );
 };
+
+export default Profile;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -36,4 +48,3 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
 });
-export default Profile;

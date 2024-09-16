@@ -34,13 +34,13 @@ const Contacts = () => {
   const contactsSorted = contacts.sort((a, b) => a.name.localeCompare(b.name));
 
   const renderContact = ({ item }) => {
-    const { name, avatar, phone } = item;
+    const { name, avatar, phone, id } = item; // Ensure id is available
     return (
       <ContactListItem
         name={name}
         avatar={avatar}
         phone={phone}
-        onPress={() => {}}
+        id={id} // Pass id to ContactListItem
       />
     );
   };
@@ -60,6 +60,7 @@ const Contacts = () => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

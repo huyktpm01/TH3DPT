@@ -28,10 +28,12 @@ const fetchUserContact = async () => {
     return mapContact(userData.results[0]);
 };
 
-const fetchRandomContact = async () => {
+
+const fetchRandomContact = async (id) => {
     const response = await fetch('https://randomuser.me/api/');
     const userData = await response.json();
     return mapContact(userData.results[0]);
 };
 
+export default fetchRandomContact;
 export { fetchContacts, fetchUserContact, fetchRandomContact };

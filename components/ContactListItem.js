@@ -8,13 +8,24 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import colors from "../utils/colors";
+import { useNavigation } from "@react-navigation/native";
 
-const ContactListItem = ({ name, avatar, phone, onPress }) => {
+const ContactListItem = ({ name, avatar, phone, id }) => {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    if (id) {
+      navigation.navigate("Profile", { id });
+    } else {
+      console.warn("Contact ID is missing");
+    }
+  };
+
   return (
     <TouchableHighlight
       underlayColor={colors.grey}
       style={styles.container}
-      onPress={onPress}
+      onPress={handlePress}
     >
       <View style={styles.contactInfo}>
         <Image style={styles.avatar} source={{ uri: avatar }} />
@@ -31,7 +42,7 @@ ContactListItem.propTypes = {
   avatar: PropTypes.string,
   name: PropTypes.string,
   phone: PropTypes.string,
-  onPress: PropTypes.func,
+  id: PropTypes.string.isRequired, // id là bắt buộc
 };
 
 const styles = StyleSheet.create({

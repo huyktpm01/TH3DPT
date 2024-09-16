@@ -40,7 +40,7 @@ const Contacts = () => {
         name={name}
         avatar={avatar}
         phone={phone}
-        onPress={() => navigation.navigate("Profile", { contact: item })}
+        onPress={() => {}}
       />
     );
   };
