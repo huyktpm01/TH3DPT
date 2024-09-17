@@ -4,6 +4,7 @@ import fetchRandomContact from "../utils/api"; // Update the import based on you
 import ContactThumbnail from "../components/ContactThumbnail";
 import DetailListItem from "../components/DetailListItem";
 import colors from "../utils/colors";
+import fetchRandomContact from "../utils/api";
 import { useRoute } from "@react-navigation/native";
 
 const Profile = () => {

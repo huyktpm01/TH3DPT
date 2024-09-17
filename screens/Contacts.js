@@ -34,16 +34,17 @@ const Contacts = () => {
   const contactsSorted = contacts.sort((a, b) => a.name.localeCompare(b.name));
 
   const renderContact = ({ item }) => {
-    const { name, avatar, phone, id } = item; // Ensure id is available
+    const { name, avatar, phone, id } = item; // Đảm bảo rằng bạn có trường id trong item
     return (
       <ContactListItem
         name={name}
         avatar={avatar}
         phone={phone}
-        id={id} // Pass id to ContactListItem
+        id={id} // Truyền prop id
       />
     );
   };
+  
 
   // Render component
   return (
